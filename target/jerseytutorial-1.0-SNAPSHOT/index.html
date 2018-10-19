@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Hi and welcome to API program !</h1>
+        <div>
+            <h2>Project 1 - CONVERT ROMANS TO NUMBER / NUMBERS TO ROMANS!</h2>
+            <p>Please fill the Romans OR Numbers Only!</p>
+            <p>Do not fill them both!</p>
+            <p>PLEASE FILL ONLY ONE OF THEM!</p>
+
+            <form name="converter" method="post">
+                ROMANS: <input type="text" name="roman" id="roman" />
+                NUMBER: <input type="text" name="number" id="number" />
+            </form>
+            <button onclick="convert()" id="get_converter">Get me weather!</button>
+        </div>
+
+        <div>
+            <h2>Project 2 - REQUEST WEATHER INFORMATION!</h2>
+            <form name="weather" method="post">
+                City: <input type="text" name="city" id="city" />
+                Mode: <input type="text" name="mode" id="mode" />
+            </form>
+            <button onclick="redirect()" id="get_weather">Get me weather!</button>
+        </div>
+
+        <script>
+            function redirect() {
+                var formCity = document.getElementById("city").value;
+                var formMode = document.getElementById("mode").value;
+                window.location.href = "http://localhost:49000/api/project/2/weather?city="+formCity+"&mode="+formMode;
+            }
+            function convert() {
+                var formRoman = document.getElementById("roman").value;
+                var formNumber = document.getElementById("number").value;
+                if (formRoman == "") {
+                    window.location.href = "http://localhost:49000/api/project/1/converter?param="+ formNumber;
+                }
+                if (formNumber ==   "") {
+                    window.location.href = "http://localhost:49000/api/project/1/converter?param="+ formRoman;
+                }
+            }
+        </script>
+    </body>
+</html>
